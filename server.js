@@ -3,15 +3,16 @@ var http = require('http');
 var url = require('url');
 
 var server = http.createServer(function(req,res){
-	console.log('url:', req.url);
+	var parts = url.parse(req.url)
+	console.log('url/path:', req.url, parts.pathname);
 	var contents = "Нет такой страницы";
 	if (req.url == "/") {
-		contents = fs.readFileSync(__dirname + "/add.html");
+		contents = fs.readFileSync(__dirname + "/products.html");
 	} else {
 		try {
-			contents = fs.readFileSync(__dirname + req.url);
+			contents = fs.readFileSync(__dirname + parts.pathname);
 		} catch (e) {
-			console.log("Не удалось прочитать файл:", req.url);
+			console.log("Не удалось прочитать файл:", parts.pathname);
 		}
 	}
 	res.end(contents);

@@ -3,7 +3,8 @@ const productItems = ["iPhoneSE", "iPhoneX", "iPhone13Pro"];
 const products = document.getElementById("products");
 
 
-function showProducts() {
+function showProducts() { 
+	alert('YES')
 	productItems.forEach((item) => {
 		products.innerHTML += `
 <h1>${item}</h1>
